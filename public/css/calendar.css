@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+    background-color: darkgrey;
+}
+
+.calendar {
+    padding: 20px;
+    width: 760px;
+    height: 560px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-image: url(/img/background.jpg);
+}
+
+.door {
+    height: 80px;
+    width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.door.unopened {
+    border-left: 1px dashed #fff;
+    border-top: 1px dashed #fff;
+    border-right: 1px solid #fff;
+    border-bottom: 1px dashed #fff;
+}
+
+.door.opened {
+    border: 1px solid #fff;
+    background-color: #fff;
+}
+
+a {
+    color: #fff !important;
+    text-decoration: none !important;
+}
