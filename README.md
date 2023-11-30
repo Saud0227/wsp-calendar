@@ -40,6 +40,8 @@ Obs. Bild 24 saknas. Fixa en lämplig egen bild.
 
 ## Server
 
+Kör `bundle install` i projektets rotmapp för att installera dependencies.
+
 Kör `rake seed` i projektets rotmapp för att seeda om databasen.
 
 Kör `rake dev` i projektets rotmapp för att starta servern med rerun.
