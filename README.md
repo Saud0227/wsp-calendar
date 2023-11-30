@@ -12,8 +12,8 @@ För att kontrollera vilken månad och dag det är i ruby:
 
 ```ruby
 time = Time.now
-t.month #=> returnerar ett heltal från 1 - 12 indikerande vilken månad det är
-t.mday #= returnar ett heltal från 1-31 indikerande vilken dag i månaden det är
+time.month #=> returnerar ett heltal från 1 - 12 indikerande vilken månad det är
+time.mday #= returnar ett heltal från 1-31 indikerande vilken dag i månaden det är
 ```
 
 ## Databas
