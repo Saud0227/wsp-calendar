@@ -1,0 +1,31 @@
+<div class="calendar">
+   
+  <% @doors.each do |door| %>
+
+    <% if door['opened'] == 1 %>
+
+    <a style="background-image: url(/img/thumbnails/<%=door['day']%>.jpg);%>" href="doors/<%=door['day']%>"  class="door opened"></a>
+    
+    <% elsif (door['day'].to_i <= Time.now.mday) && (Time.now.month == 12) %>
+    
+    <a href="doors/<%=door['day']%>" class="door unopened">
+      <div class="door-number"><%= door['day'] %></div>
+    </a>
+    
+    <% else %>
+    
+    <div class="door unopened">
+      <div class="door-number"><%= door['day'] %></div>
+    </div>
+
+    <% end %>
+
+
+    
+    
+  <% end %>
+</div>
+
+
+
+<a href="/reset">Reset</a>

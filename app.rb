@@ -1,3 +1,4 @@
+require_relative 'db/seeder'
 class Calendar < Sinatra::Base
 
     def db
@@ -10,17 +11,32 @@ class Calendar < Sinatra::Base
     get '/' do
         @doors = db.execute('SELECT * FROM doors')
 
-        erb :index
+        erb :'door/index'
     end
 
-
-    get '/doors/:day' do
-        @door = db.execute('SELECT * FROM doors WHERE day = ?', params[:day]).first
-        puts @door
-        db.execute('UPDATE doors SET opened = true WHERE day = ?', params[:day])
-        puts @door
-        erb :'door/show'
+    get '/doors/denied' do
+        erb :'door/denied'
     end
+
+    get '/doors/:day' do |day|
+        time = Time.now
+        
+        if ((day.to_i <= time.mday) && (time.month == 12))
+            @door = db.execute('SELECT * FROM doors WHERE day = ?', params[:day]).first
+
+            db.execute('UPDATE doors SET opened = true WHERE day = ?', params[:day])
+
+            erb :'door/show'
+        else
+            redirect '/doors/denied'
+        end
+    end
+
+    get '/reset' do
+        Seeder.seed!
+        redirect '/'
+    end
+
 
 end
 
